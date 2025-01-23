@@ -6,11 +6,11 @@ class Emprestimo {
         Livro livros[3];
 
     public:
-        Emprestimo() {}
+        Emprestimo() = default;
 
         void adicionarLivros(int posicao, std::string &nomeLivro, std::string &nomeAutor) {
             if (posicao >= 0 && posicao < 3) {
-                livros[posicao] = new Livro(nomeLivro, nomeAutor);
+                livros[posicao] = Livro(nomeLivro, nomeAutor);
             }
             else {
                 std::cout << "Posicao invalida" << std::endl;

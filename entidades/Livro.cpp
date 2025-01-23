@@ -10,14 +10,20 @@ class Livro {
 
     public:
 
-        Livro() {
-            nomeLivro = "";
-            nomeAutor = "";
-        }
-
-        Livro(std::string &livro, std::string &autor) {
+        Livro(const std::string &livro, const std::string &autor) {
             nomeLivro = livro;
             nomeAutor = autor;
+        }
+
+        Livro(const Livro &other)
+            : nomeLivro(other.nomeLivro), nomeAutor(other.nomeAutor) {}
+
+        Livro& operator = (const Livro& other) {
+            if (this != &other) {
+                nomeLivro = other.nomeLivro;
+                nomeAutor = other.nomeAutor;
+            }
+            return *this;
         }
 
         std::string getNomeLivro() {
