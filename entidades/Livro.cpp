@@ -9,6 +9,10 @@ class Livro {
         std::string nomeAutor;
 
     public:
+        Livro() {
+            nomeLivro = "";
+            nomeAutor = "";
+        }
 
         Livro(const std::string &livro, const std::string &autor) {
             nomeLivro = livro;

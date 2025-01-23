@@ -6,9 +6,13 @@ class Emprestimo {
         Livro livros[3];
 
     public:
-        Emprestimo() = default;
+        Emprestimo() {
+            for (int i = 0; i < 3; i++) {
+                livros[i] = Livro("", "");
+            }
+        }
 
-        void adicionarLivros(int posicao, std::string &nomeLivro, std::string &nomeAutor) {
+        void adicionarLivros(int posicao, const std::string &nomeLivro, const std::string &nomeAutor) {
             if (posicao >= 0 && posicao < 3) {
                 livros[posicao] = Livro(nomeLivro, nomeAutor);
             }
