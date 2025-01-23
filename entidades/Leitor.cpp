@@ -1,13 +1,15 @@
 #include <iostream>
 #include <string>
+#include "Emprestimo.cpp"
 
 class Leitor {
 
     private:
         std::string nomeCompleto;
+        Emprestimo emprestimo;
     
     public:
-        Leitor(std::string &nome) {
+        Leitor(std::string &nome, Emprestimo emprestimo) {
             nomeCompleto = nome;
         }
 
@@ -17,5 +19,9 @@ class Leitor {
 
         void setNome(std::string &nome) {
             nomeCompleto = nome;
+        }
+
+        Emprestimo getEmprestimo() {
+            return emprestimo;
         }
 };
