@@ -12,6 +12,7 @@ class Emprestimo {
             }
         }
 
+        //Funcao de adicionar livros ao vetor
         void adicionarLivros(int posicao, const std::string &nomeLivro, const std::string &nomeAutor) {
             if (posicao >= 0 && posicao < 3) {
                 livros[posicao] = Livro(nomeLivro, nomeAutor);

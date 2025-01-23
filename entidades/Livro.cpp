@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <optional>
 
 class Livro {
 
@@ -9,6 +10,7 @@ class Livro {
         std::string nomeAutor;
 
     public:
+        //Construtores(C++ eu te odeio)
         Livro() {
             nomeLivro = "";
             nomeAutor = "";
@@ -30,6 +32,7 @@ class Livro {
             return *this;
         }
 
+        //Getters e Setters
         std::string getNomeLivro() {
             return nomeLivro;
         }
@@ -47,8 +50,8 @@ class Livro {
         }
 
         //funcao de procurar pelo nome do livro(ignora maisculas e minusculas)
-        bool procurarNomeLivro(const std::string &procura) {
-            if (procura.size() != nomeLivro.size()) return false;
+        std::optional<Livro> procurarNomeLivro(const std::string &procura) {
+            if (procura.size() != nomeLivro.size()) return std::nullopt;
 
             std::string lowerProcura = procura;
             std::string lowerNomeLivro = nomeLivro;
@@ -56,6 +59,25 @@ class Livro {
             std::transform(lowerProcura.begin(), lowerProcura.end(), lowerProcura.begin(), ::_Tolower);
             std::transform(lowerNomeLivro.begin(), lowerNomeLivro.end(), lowerNomeLivro.begin(), ::_Tolower);
 
-            return lowerProcura == lowerNomeLivro;
+            if (lowerProcura == lowerNomeLivro) {
+                return *this;
+            }
+            else return std::nullopt;
+        }
+
+        //funcao de procurar pelo nome do autor(ignora maisculas e minusculas)
+        std::optional<Livro> procurarNomeAutor(const std::string &procura) {
+            if (procura.size() != nomeAutor.size()) return std::nullopt;
+
+            std::string lowerProcura = procura;
+            std::string lowerNomeAutor = nomeAutor;
+
+            std::transform(lowerProcura.begin(), lowerProcura.end(), lowerProcura.begin(), ::_Tolower);
+            std::transform(lowerNomeAutor.begin(), lowerNomeAutor.end(), lowerNomeAutor.begin(), ::_Tolower);
+
+            if (lowerProcura == lowerNomeAutor) {
+                return *this;
+            }
+            else return std::nullopt;
         }
 };
