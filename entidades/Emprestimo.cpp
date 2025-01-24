@@ -4,7 +4,7 @@
 class Emprestimo {
     private:
         Livro livros[3];
-        std::string data_hora;
+        // alerta para 30 dias
 
     public:
         Emprestimo() {
