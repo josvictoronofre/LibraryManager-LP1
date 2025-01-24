@@ -4,12 +4,6 @@
 #include <string>
 #include <ctime>
 
-
-#include <iostream>
-#include <thread>
-#include <chrono>
-#include <ctime>
-
 class Alerta {
     private:
         std::chrono::system_clock::time_point alerta_time;
