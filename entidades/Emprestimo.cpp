@@ -4,6 +4,7 @@
 class Emprestimo {
     private:
         Livro livros[3];
+        std::string data_hora;
 
     public:
         Emprestimo() {
