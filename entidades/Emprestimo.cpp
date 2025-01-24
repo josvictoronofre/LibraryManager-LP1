@@ -4,7 +4,7 @@
 class Emprestimo {
     private:
         Livro livros[3];
-        // alerta para 30 dias
+        // adicionar alerta para 30 dias
 
     public:
         Emprestimo() {
