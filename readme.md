@@ -7,7 +7,7 @@ Projeto de um gerenciador de biblioteca para a disciplina de Linguagem de Progra
 ## Estrutura de diretórios
 
 * **Data**: Arquivos com os dados lidos pelo programa
-* **Include**:` Diretório com os árquivos fonte (.h).
+* **Include**: Diretório com os árquivos fonte (.h).
 * **Source:** Contém os arquivos de código-fonte em C++. Nele estão as principais funções desenvolvidas para o projeto.  
 * **main:** Contém o principal arquivo do programa.
 
