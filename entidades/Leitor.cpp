@@ -11,8 +11,14 @@ class Leitor {
         Emprestimo emprestimo;
     
     public:
-        Leitor(std::string &nome, Emprestimo emprestimo) {
+        Leitor () {
+            nomeCompleto = "";
+            emprestimo = Emprestimo();
+        }
+
+        Leitor(const std::string &nome, const Emprestimo entrandaEmprestimo) {
             nomeCompleto = nome;
+            emprestimo = entrandaEmprestimo;
         }
 
         std::string getNome() {
@@ -27,6 +33,7 @@ class Leitor {
             return emprestimo;
         }
 
+        //Procurar pelo nome do leitor(ignora maisculas e minusculas)
         std::optional<Leitor> procurarLeitor(const std::string &procura) {
             if (procura.size() != nomeCompleto.size()) return std::nullopt;
 
