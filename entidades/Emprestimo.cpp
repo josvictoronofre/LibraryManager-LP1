@@ -11,6 +11,7 @@ class Emprestimo {
         Emprestimo() {
             for (int i = 0; i < 3; i++) {
                 livros[i] = Livro("", "");
+                alertas[i] = Alerta();
             }
         }
 
@@ -25,4 +26,4 @@ class Emprestimo {
                 std::cout << "Posicao invalida" << std::endl;
             }
         }
-};
+};;
