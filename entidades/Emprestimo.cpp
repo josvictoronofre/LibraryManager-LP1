@@ -1,35 +1,31 @@
-#include <iostream>
-#include "Livro.cpp"
-#include "Alerta.cpp"
+#include "../include/Emprestimo.hpp"
 
-class Emprestimo {
-    private:
-        Livro livros[3];
-        Alerta alertas[3];
+// Construtor
+Emprestimo::Emprestimo()
+{
+   
+}
 
-        void verificar_alertas_automatico() {
-            for (int i = 0; i < 3; i++) {
-                alertas[i].verificar_e_disparar();
-            }
-        }
+// Método para retornar o livro emprestado
+Livro &Emprestimo::getLivro()
+{
+    return livro; // Retorna a referência para o livro
+}
 
-    public:
-        Emprestimo() {
-            for (int i = 0; i < 3; i++) {
-                livros[i] = Livro("", "");
-                alertas[i] = Alerta();
-            }
-        }
+// Método para definir o livro emprestado
+void Emprestimo::setLivro(const Livro &livro)
+{
+    this->livro = livro; // Atribui o livro ao Emprestimo
+}
 
-        //Funcao de adicionar livros ao vetor
-        void adicionarLivros(int posicao, const std::string &nomeLivro, const std::string &nomeAutor) {
-            if (posicao >= 0 && posicao < 3) {
-                livros[posicao] = Livro(nomeLivro, nomeAutor);
-                std::cout << "Livro \"" << nomeLivro << "\" emprestado. Prazo de devolução: " << alertas[posicao].get_alerta_time() << std::endl;
-                verificar_alertas_automatico();
-            }
-            else {
-                std::cout << "Posicao invalida" << std::endl;
-            }
-        }
-};;
+// Método para devolver o livro emprestado
+void Emprestimo::devolverLivro()
+{
+    livro.devolver(); // Marca o livro como devolvido
+}
+
+// Método para adicionar um livro (usado apenas para setar o livro inicialmente)
+void Emprestimo::adicionarLivro(const std::string &nomeLivro, const std::string &nomeAutor)
+{
+    livro = Livro(nomeLivro, nomeAutor); // Cria e define o livro
+}

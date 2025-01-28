@@ -1,13 +1,16 @@
 #include <iostream>
-#include "../entidades/Livro.cpp"
+#include "../include/Entrada.hpp"
 #include <string.h>
+#include <vector>
 
-void ler_csv(const char *filename)
+std::vector<Livro> ler_csv(const char *filename)
 {
     char linha[1024];
     Livro livro_temp;
+    std::vector<Livro> vetor;
     std::string temp;
     FILE *arquivo_csv = fopen(filename, "r");
+
     if (arquivo_csv == NULL)
     {
         printf("Erro ao abrir o arquivo.\n");
@@ -20,7 +23,8 @@ void ler_csv(const char *filename)
         linha[strcspn(linha, "\n")] = 0;
 
         char *token = strtok(linha, ",");
-        if (token == NULL) continue;
+        if (token == NULL)
+            continue;
         temp = token;
         livro_temp.setNomeLivro(temp);
 
@@ -30,7 +34,28 @@ void ler_csv(const char *filename)
             temp = token;
             livro_temp.setNomeAutor(temp);
         }
-        //inserir_livro(Livro_temp)
+
+        token = strtok(NULL, ",");
+        if (token != NULL)
+        {
+            // Lê o status de "emprestado" e ajusta o livro
+            if (strcmp(token, "1") == 0)
+            {
+                livro_temp.emprestar(); // Marca como emprestado
+            }
+            else 
+            {
+                livro_temp.devolver(); // Marca como disponível
+            }
+        }
+
+        inserir_livro(vetor, livro_temp);
     }
     fclose(arquivo_csv);
+    return vetor;
+}
+
+void inserir_livro(std::vector<Livro> &vetor, Livro livro)
+{
+    vetor.push_back(livro);
 }
