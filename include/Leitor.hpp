@@ -14,15 +14,15 @@ private:
 public:
     // Construtores
     Leitor();
-    Leitor(const std::string &nome, const Emprestimo entrandaEmprestimo);
+    Leitor(const std::string &nome, const Emprestimo &entradaEmprestimo); // Passagem por referência constante
 
     // Getters e Setters
-    std::string getNome();
-    void setNome(std::string &nome);
-    Emprestimo getEmprestimo();
+    std::string getNome() const;           
+    void setNome(const std::string &nome); 
+    Emprestimo getEmprestimo() const;      
 
     // Função de busca
-    std::optional<Leitor> procurarLeitor(const std::string &procura);
+    std::optional<Leitor> procurarLeitor(const std::string &procura) const; 
 };
 
 #endif // LEITOR_H
